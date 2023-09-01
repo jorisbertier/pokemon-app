@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { POKEMONS } from './mock-pokemons-list';
+import { Pokemon } from './pokemons';
 
 @Component({
   selector: 'app-root',
@@ -6,17 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'pokemon-app';
-  pokemonList: Array<string> = ["salameche", 'ectoplasma', 'lipoutou'];
-
+  pokemonList: Pokemon[] = POKEMONS;
+  
   ngOnInit(): void {
     console.log('test');
+    
     console.table(this.pokemonList);
 
-    this.selectPokemon(this.pokemonList[0]);
+    // this.selectPokemon(this.pokemonList.name);
   }
 
-  selectPokemon(pokemon: string):void {
+  selectPokemon(pokemon: string[]) {
     console.log("vous avez selectionné ce pokemon " + pokemon);
+    // POKEMONS.forEach((element) => console.log( element));
+    console.log(this.pokemonList[1].name);
+
+    }
   }
-} 
+
 

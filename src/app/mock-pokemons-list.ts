@@ -1,5 +1,5 @@
 import { Pokemon } from './pokemons';
- 
+
 export const POKEMONS: Pokemon[] = [
     {
         id: 1,
