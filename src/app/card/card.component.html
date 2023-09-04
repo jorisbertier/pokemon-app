@@ -1,10 +1,14 @@
 <h1>Component card</h1>
-
+<input class="container"
+  #input
+  (keyup.enter)="afficheNumberPokemon(+input.value)"
+  type="number"
+>
 <div class="container">
     <div class="row">
       <div *ngFor="let pokemon of pokemonList" class="col-md-4">
         <div class="card mb-3">
-          <img src="{{pokemon.picture}}" class="card-img-top" alt="Image de {{pokemon.name}}">
+          <img (click)="selectPokemon(pokemon)" src="{{pokemon.picture}}" class="card-img-top" alt="Image de {{pokemon.name}}">
           <div class="card-body">
             <h5 class="card-title">{{pokemon.name}}</h5>
             <p class="card-text">Créé le : {{pokemon.created}}</p>
@@ -14,3 +18,21 @@
       </div>
     </div>
   </div>
+  <!-- <input class="container"
+  #input
+  (keyup.enter)="afficheNumberPokemon(+input.value)"
+  type="number"
+>
+
+<div class="container card-group">
+<div *ngFor="let pokemon of pokemonList" class="test">
+
+   <div class="card" style="width: 18rem;">
+       <img (click)="selectPokemon(pokemon)" src="{{ pokemon.picture }}" class="card-img-top" alt="...">
+       <div class="card-body">
+           <h5 class="card-title">{{ pokemon.name }}</h5>
+           <p class="card-text">Créé le : {{ pokemon.created }}</p>
+       </div>
+   </div>
+
+</div></div> -->

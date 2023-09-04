@@ -27,10 +27,14 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <div *ngIf="isConnected == 1">
+            <button type="button" class="btn btn-success">Profile</button>
+        </div>
+
+        <div *ngIf="isConnected == 0">
+            <button type="button" class="btn btn-danger">Se connecter</button>
+        </div>
+
       </div>
     </div>
   </nav>
