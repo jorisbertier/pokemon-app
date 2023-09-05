@@ -26,18 +26,36 @@ import { Store } from './store';
 </div>
 
 
-<div *ngFor="let basket of baskets"></div>
 
-Stot
-
-<div class="cart">
-  <h2>Panier</h2>
-  <ul>
-    <li *ngFor="let basket of baskets">
-        {{basket.name}}   {{basket.price/100 * basket.quantity}}€ , quantité: {{basket.quantity}}
-    </li>
-  </ul>
-</div>
+<div class="card mb-3">
+                  <div class="card-body" *ngFor="let basket of baskets" >
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="{{basket.picture}}"
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5>Iphone 11 pro</h5>
+                          <p class="small mb-0">{{basket.name}}</p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <div style="width: 50px;">
+                          <h5 class="fw-normal mb-0">{{basket.quantity}}</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0">{{basket.price/100 * basket.quantity}} €</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <!-- <button class="btn btn-danger" (click)="removeProductBasket(product)">Delete</button> -->
+                        </div>
+                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 `,
   styles: [
   ]
@@ -73,11 +91,6 @@ export class StoreComponent {
   }
 
   addBasket(product:Store) {
-
-    // if(this.baskets.find(this.indexs) !== undefined) {
-
-    // }
-
     const similarName = this.baskets.find(item => item.name === product.name);
 
     if (similarName) {
@@ -85,18 +98,20 @@ export class StoreComponent {
     } else {
       this.baskets.push(product);
     }
-
-
-    // this.baskets = [];
     
-    // this.baskets.push(product);
-    console.log(this.baskets);
-    
-    this.quantities = product.quantity;
-    
+    this.quantities = product.quantity
 
-      this.indexs.push(product.id);
-      console.log(this.indexs);
+    this.indexs.push(product.id);
 
   }
+
+  // removeProductBasket(baskets) {
+  //   const similarName = this.baskets.find(item => item.name === product.name);
+
+  //   if (similarName) {
+  //     this.baskets.splice(product.id);
+  //   } else {
+      
+  //   }
+  // }
 }
