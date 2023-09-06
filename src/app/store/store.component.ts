@@ -37,8 +37,8 @@ import { Store } from './store';
                             class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                         </div>
                         <div class="ms-3">
-                          <h5>Iphone 11 pro</h5>
-                          <p class="small mb-0">{{basket.name}}</p>
+                          <h5>{{basket.name}}</h5>
+                          <p class="small mb-0">{{basket.types}}</p>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
@@ -49,7 +49,7 @@ import { Store } from './store';
                           <h5 class="mb-0">{{basket.price/100 * basket.quantity}} €</h5>
                         </div>
                         <div style="width: 80px;">
-                          <!-- <button class="btn btn-danger" (click)="removeProductBasket(product)">Delete</button> -->
+                          <button class="btn btn-danger" (click)="removeProductBasket(basket)">Delete</button>
                         </div>
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                       </div>
@@ -94,24 +94,22 @@ export class StoreComponent {
     const similarName = this.baskets.find(item => item.name === product.name);
 
     if (similarName) {
-
     } else {
       this.baskets.push(product);
     }
     
     this.quantities = product.quantity
-
     this.indexs.push(product.id);
 
   }
 
-  // removeProductBasket(baskets) {
-  //   const similarName = this.baskets.find(item => item.name === product.name);
+  removeProductBasket(product: Store) {
+    const index = this.baskets.findIndex(item => item.name === product.name);
 
-  //   if (similarName) {
-  //     this.baskets.splice(product.id);
-  //   } else {
+    if (index !== -1) {
+      this.baskets.splice(index, 1);
+    } else {
       
-  //   }
-  // }
+    }
+  }
 }
